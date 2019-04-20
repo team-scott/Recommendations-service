@@ -1,14 +1,18 @@
 const faker = require('faker');
-const MongoClient = require('mongodb').MongoClient;
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-// Connection URL
-const url = 'mongodb://localhost:27017';
-
-// Database Name
-const dbName = 'airbnb';
-
-// Create a new MongoClient
-const client = new MongoClient(url);
+const csvWriter = createCsvWriter({
+  path: 'out.csv',
+  header: [
+    { id: 'recImg', title: 'RecImg' },
+    { id: 'recDetails', title: 'RecDetails' },
+    { id: 'recTitle', title: 'RecTitle' },
+    { id: 'recCost', title: 'RecCost' },
+    { id: 'recRating', title: 'RecRating' },
+    { id: 'recRatingCount', title: 'RecRatingCount' },
+    { id: 'roomId', title: 'RoomId' }
+  ]
+});
 
 // Helper functions to generate seeding data
 const images = [
@@ -30,7 +34,7 @@ const images = [
 
 let recSeeder = () => {
   let recSeeds = [];
-  while (recSeeds.length < 1000) {
+  while (recSeeds.length < 10000) {
     recSeeds.push({
       recImg: images[Math.floor(Math.random() * Math.floor(images.length))],
       recDetails: faker.lorem.sentence(),
@@ -44,29 +48,17 @@ let recSeeder = () => {
   return recSeeds;
 };
 
-client
-  .connect()
-  .then(client => {
-    console.log('MongoDB: CONNECTED TO DATABASE');
-    const db = client.db(dbName);
+let batches = 0;
+let append = () => {
+  if (batches < 1000) {
+    batches += 1;
+    let data = recSeeder();
+    csvWriter.writeRecords(data).then(() => append());
+  } else {
+    console.timeEnd('writeCSV')
+    console.log('The CSV file was written successfully');
+  }
+};
 
-    // Insert 1000 documents, 10000 times
-
-    let recsBatchCount = 0;
-    let addRecs = () => {
-      if (recsBatchCount < 10000) {
-        recsBatchCount += 1;
-        let recDocs = recSeeder();
-        db.collection('recommendations').insertMany(recDocs, (err, res) => {
-          addRecs();
-        });
-      } else {
-        console.timeEnd('dbSave')
-        console.log('all documents seeded');
-      }
-    };
-    
-    console.time('dbSave');
-    addRecs();
-  })
-  .catch(err => console.log(`MongoDB: DATABASE ERROR --> ${err}`));
+console.time('writeCSV');
+append();
