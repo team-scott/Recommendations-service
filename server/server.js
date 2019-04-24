@@ -18,7 +18,6 @@ app.get('/room/:room', (req, res) => {
   getRecs(req.params.room, (err, results) => {
     if (err) console.error('Error querying database...');
     else {
-      console.log(`results in server look like ${results}`);
       res.send(results);
     }
   });
