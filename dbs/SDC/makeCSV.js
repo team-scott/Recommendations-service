@@ -50,12 +50,12 @@ let recSeeder = () => {
 
 let batches = 0;
 let append = () => {
-  if (batches < 1000) {
+  if (batches < 5000) {
     batches += 1;
     let data = recSeeder();
     csvWriter.writeRecords(data).then(() => append());
   } else {
-    console.timeEnd('writeCSV')
+    console.timeEnd('writeCSV');
     console.log('The CSV file was written successfully');
   }
 };
