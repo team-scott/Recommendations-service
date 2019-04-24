@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 3001;
-const controller = require('./controller/controller')
+const getRecs = require('../dbs/SDC/MongoDB/index.js')
 const cors = require('cors')
 
 app.use(cors())
@@ -14,9 +14,15 @@ app.get('/:room', function(req, res) {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-app.get('/room/:room', (req, res, next) => {
-  controller.getRoomRecommendations(req, res, next)
-})
+app.get('/room/:room', (req, res) => {
+  getRecs(req.params.room, (err, results) => {
+    if (err) console.error('Error querying database...');
+    else {
+      console.log(`results in server look like ${results}`);
+      res.send(results);
+    }
+  });
+});
 
 app.listen(port, () => {
   console.log(`server running at: http://localhost:${port}`);

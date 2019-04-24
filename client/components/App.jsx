@@ -14,10 +14,10 @@ class App extends Component {
       recommendations: seed,
       isModalOpen: false,
       isInnerModalOpen: false,
-      modalImg: seed[0].recImg,
-      modalTitle: seed[0].recTitle,
-      modalRating: seed[0].recRating,
-      modalRatingCount: seed[0].recratingCount,
+      modalImg: seed[0].RecImg,
+      modalTitle: seed[0].RecTitle,
+      modalRating: seed[0].RecRating,
+      modalRatingCount: seed[0].RecRatingCount,
       modalId: 130,
       editing:false
     }
@@ -30,9 +30,9 @@ class App extends Component {
     if (window.location.pathname !== '/') {
       //Change the below to be the public DNS of your recommendation-service server in AWS
       axios.get(`/room${window.location.pathname}`) 
-      .then(({data}) => {
+      .then((results) => {
         this.setState({
-          recommendations: data
+          recommendations: results.data
         })
       })
     }
