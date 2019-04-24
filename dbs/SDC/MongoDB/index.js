@@ -8,7 +8,6 @@ const getRecs = (id, callback) => {
     db = client.db('airbnb');
     db.collection('recommendations').find({RoomId: +id}).toArray((err, results) => {
       if (err) throw err;
-      console.log(`results from mongo lookup: id: ${id}, results: ${JSON.stringify(results)}`)
       callback(null, JSON.stringify(results));
     });
   });
