@@ -32,13 +32,13 @@ let recSeeder = () => {
   let recSeeds = [];
   while (recSeeds.length < 1000) {
     recSeeds.push({
-      recImg: images[Math.floor(Math.random() * Math.floor(images.length))],
-      recDetails: faker.lorem.sentence(),
-      recTitle: faker.lorem.sentence(),
-      recCost: '' + faker.random.number({ min: 1, max: 100 }),
-      recRating: '' + faker.random.number({ min: 3, max: 5 }),
-      recRatingCount: '' + faker.random.number({ min: 40, max: 100 }),
-      roomId: '' + faker.random.number({ min: 1, max: 10000000 })
+      RecImg: images[Math.floor(Math.random() * images.length)],
+      RecDetails: faker.lorem.sentence(),
+      RecTitle: faker.lorem.sentence(),
+      RecCost: '' + faker.random.number({ min: 1, max: 100 }),
+      RecRating: '' + faker.random.number({ min: 3, max: 5 }),
+      RecRatingCount: '' + faker.random.number({ min: 40, max: 100 }),
+      RoomId: '' + faker.random.number({ min: 1, max: 10000000 })
     });
   }
   return recSeeds;
@@ -54,7 +54,7 @@ client
 
     let recsBatchCount = 0;
     let addRecs = () => {
-      if (recsBatchCount < 10000) {
+      if (recsBatchCount < 50000) {
         recsBatchCount += 1;
         let recDocs = recSeeder();
         db.collection('recommendations').insertMany(recDocs, (err, res) => {

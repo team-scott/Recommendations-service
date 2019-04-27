@@ -10,7 +10,7 @@ class CarouselList extends Component {
     return (
       <div>
         <div className='heart' onClick={this.props.openModal} 
-        value={this.props.recommendation.id} 
+        value={this.props.recommendation._id} 
         img={this.props.recommendation.RecImg}
         title={this.props.recommendation.RecTitle}
         rating={this.props.recommendation.RecRating}
