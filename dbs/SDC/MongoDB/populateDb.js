@@ -50,11 +50,11 @@ client
     console.log('MongoDB: CONNECTED TO DATABASE');
     const db = client.db(dbName);
 
-    // Insert 1000 documents, 10000 times
+    // Insert 1000 documents, 30000 times
 
     let recsBatchCount = 0;
     let addRecs = () => {
-      if (recsBatchCount < 50000) {
+      if (recsBatchCount < 30000) {
         recsBatchCount += 1;
         let recDocs = recSeeder();
         db.collection('recommendations').insertMany(recDocs, (err, res) => {

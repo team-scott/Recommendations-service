@@ -34,7 +34,7 @@ const images = [
 
 let recSeeder = () => {
   let recSeeds = [];
-  while (recSeeds.length < 10000) {
+  while (recSeeds.length < 1000) {
     recSeeds.push({
       RecImg: images[Math.floor(Math.random() * images.length)],
       RecDetails: faker.lorem.sentence(),
@@ -50,7 +50,7 @@ let recSeeder = () => {
 
 let batches = 0;
 let append = () => {
-  if (batches < 5000) {
+  if (batches < 30000) {
     batches += 1;
     let data = recSeeder();
     csvWriter.writeRecords(data).then(() => append());
