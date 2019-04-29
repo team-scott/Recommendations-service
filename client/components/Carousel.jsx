@@ -16,8 +16,8 @@ class Carousel extends Component {
     return (
          <div className="container">
           <Slider {...settings}>
-            {this.props.recommendations.map(rec => {
-              return <CarouselList openModal={this.props.openModal} recommendation={rec}/>
+            {this.props.recommendations.map((rec, index) => {
+              return <CarouselList openModal={this.props.openModal} recommendation={rec} key={index}/>
             })}
           </Slider>
         </div>
