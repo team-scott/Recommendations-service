@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const path = require('path');
 const getRecs = require('../dbs/SDC/MongoDB/index.js')
 const cors = require('cors')
-const mongoUtil = require('./mongoUtil.js')
+const mongoUtil = require('../dbs/SDC/MongoDB/mongoUtil.js')
 
 const port = 3001;
 const app = express();
