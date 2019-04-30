@@ -8,8 +8,12 @@ const port = 3001;
 const app = express();
 app.use(cors())
 app.use(morgan('dev'));
-app.use('/:room', express.static(path.join(__dirname, '../public')));
+app.use('/', express.static(path.join(__dirname, '../public')));
 
+
+app.get('/:room', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'))
+});
 
 app.get('/room/:room', (req, res) => {
   getRecs(req.params.room, (err, results) => {
