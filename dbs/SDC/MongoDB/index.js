@@ -1,18 +1,17 @@
-const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://3.82.236.59/';
+const mongoUtil = require('mongoUtil')
 
+mongoUtil.connectToServer( ( err, client ) => {
+  if (err) console.log(err);
+} );
 
+var db = mongoUtil.getDb();
 
 const getRecs = (id, callback) => {
-  MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
+  db.collection('recommendations').find({RoomId: +id}).toArray((err, results) => {
     if (err) throw err;
-    let db = client.db('airbnb');
-    db.collection('recommendations').find({RoomId: +id}).toArray((err, results) => {
-      if (err) throw err;
-      callback(null, JSON.stringify(results));
-    });
+    console.log(`Results of db lookup: ${JSON.stringify(results)}`);
+    callback(null, JSON.stringify(results));
   });
-}
-
+};
 
 module.exports = getRecs;
