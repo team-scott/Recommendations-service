@@ -5,3 +5,4 @@ config
 .env
 out.csv
 .DS_Store
+indexOneCon.js
