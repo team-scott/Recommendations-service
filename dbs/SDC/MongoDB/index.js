@@ -1,4 +1,4 @@
-const mongoUtil = require('mongoUtil.js')
+const mongoUtil = require('./mongoUtil.js')
 
 mongoUtil.connectToServer( ( err, client ) => {
   if (err) console.log(err);
