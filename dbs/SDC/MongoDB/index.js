@@ -1,11 +1,12 @@
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://34.238.50.168:21017/';
-
-
+const url = 'mongodb://34.238.50.168/';
 
 const getRecs = (id, callback) => {
   MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
-    if (err) throw err;
+    if (err) {
+      console.log(`Error connecting to DB, ${err}`)
+      throw err;
+    }
     console.log(`Connected to airbnb database`)
     let db = client.db('airbnb');
     db.collection('recommendations').find({RoomId: +id}).toArray((err, results) => {
