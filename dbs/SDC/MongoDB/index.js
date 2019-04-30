@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://34.238.50.168/';
 
-const db;
+var db;
 
 MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
   if (err) {
