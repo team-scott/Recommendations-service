@@ -1,9 +1,5 @@
 const mongoUtil = require('./mongoUtil.js')
 
-mongoUtil.connectToServer( ( err, client ) => {
-  if (err) console.log(err);
-} );
-
 var db = mongoUtil.getDb();
 
 const getRecs = (id, callback) => {
