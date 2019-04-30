@@ -29,7 +29,7 @@ class App extends Component {
   componentDidMount() {
     if (window.location.pathname !== '/') {
       //Change the below to be the public DNS of your recommendation-service server in AWS
-      axios.get(`http://http://ec2-18-206-252-56.compute-1.amazonaws.com/room${window.location.pathname}`) 
+      axios.get(`http://ec2-18-206-252-56.compute-1.amazonaws.com/room${window.location.pathname}`) 
       .then((results) => {
         this.setState({
           recommendations: results.data
