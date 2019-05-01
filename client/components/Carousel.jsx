@@ -7,12 +7,22 @@ class Carousel extends Component {
     super(props)
   }
   render() {
-    var settings = {
+    var settings;
+    if (this.props.recommendations.length >= 3) {
+      settings = {
+        dots: true,
+        slidesToShow: 3,
+        centerMode: true,
+        centerPadding:0
+      }; 
+    } else {
+      settings = {
       dots: true,
-      slidesToShow: 3,
+      slidesToShow: this.props.recommendations.length,
       centerMode: true,
       centerPadding:0
-    };
+      };
+    }
     return (
          <div className="container">
           <Slider {...settings}>
