@@ -10,6 +10,9 @@ app.use(cors())
 app.use(morgan('dev'));
 app.use('/', express.static(path.join(__dirname, '../public')));
 
+app.get('/loaderio-0c158148e92483af0cd6a9139279117c', (req, res) => {
+  res.send('loaderio-0c158148e92483af0cd6a9139279117c')
+})
 
 app.get('/:room', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'))
@@ -23,6 +26,8 @@ app.get('/room/:room', (req, res) => {
     }
   });
 });
+
+
 
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
