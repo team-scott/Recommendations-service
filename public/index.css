@@ -5,7 +5,8 @@
 .more-homes-box{
   position: relative;
   top:80px;
-  left:12%
+  left:12%;
+  margin-bottom: 60px;
 }
 
 .more-homes-title {
