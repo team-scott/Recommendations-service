@@ -45,7 +45,12 @@ let recSeeder = () => {
 };
 
 client
-  .connect({ useNewUrlParser: true })
+  .connect({ useNewUrlParser: true }, (err, client) => {
+    if (err) {
+      console.log(`Error connecting to DB, ${err}`)
+      throw err;
+    }
+  })
   .then(client => {
     console.log('MongoDB: CONNECTED TO DATABASE');
     const db = client.db(dbName);
