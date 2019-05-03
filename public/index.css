@@ -1,5 +1,5 @@
 .app {
-  margin-top: 20px;
+  margin-top: 60px;
 }
 
 .more-homes-box{
@@ -251,7 +251,7 @@ h3 {
   display: block;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
-  background-color: red;
+  background-color: white;
   width: 20px;
   height: 12px;
   top: 8px;
