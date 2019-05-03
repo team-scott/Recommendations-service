@@ -10,8 +10,8 @@ app.use(cors())
 app.use(morgan('dev'));
 app.use('/', express.static(path.join(__dirname, '../public')));
 
-app.get('/loaderio-0c158148e92483af0cd6a9139279117c', (req, res) => {
-  res.send('loaderio-0c158148e92483af0cd6a9139279117c')
+app.get('/loaderio-26279a00fd1f7e11bb0a2aa9e783d9e5', (req, res) => {
+  res.send('loaderio-26279a00fd1f7e11bb0a2aa9e783d9e5')
 })
 
 app.get('/:room', (req, res) => {
