@@ -6,7 +6,7 @@
   position: relative;
   top:80px;
   left:12%;
-  margin-bottom: 60px;
+  margin-bottom: 60px !important;
 }
 
 .more-homes-title {
