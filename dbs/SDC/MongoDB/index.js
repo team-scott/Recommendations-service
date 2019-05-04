@@ -3,13 +3,15 @@ const url = 'mongodb://52.91.16.180/';
 
 var db;
 
-MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
+const connect = () => {
+  MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
   if (err) {
     console.log(`Error connecting to DB, ${err}`)
     throw err;
   }
   db = client.db('airbnb');
-});
+  });
+}
 
 const getRecs = (id, callback) => {
   console.log(`Connected to airbnb database`)
@@ -19,4 +21,5 @@ const getRecs = (id, callback) => {
   });
 }
 
-module.exports = getRecs;
+module.exports.getRecs = getRecs;
+module.exports.connect = connect;

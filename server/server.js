@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const getRecs = require('../dbs/SDC/MongoDB/index.js')
+const {getRecs, connect} = require('../dbs/SDC/MongoDB/index.js')
 const cors = require('cors')
 
 const port = 3001;
@@ -28,7 +28,7 @@ app.get('/room/:room', (req, res) => {
 });
 
 
-
+connect();
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
 });
