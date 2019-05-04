@@ -3,7 +3,7 @@ const url = 'mongodb://52.91.16.180/';
 
 var db;
 
-MongoClient.connect(url, {  poolSize: 50, useNewUrlParser: true }, (err, client) => {
+MongoClient.connect(url, {  poolSize: 15, useNewUrlParser: true }, (err, client) => {
   if (err) {
     console.log(`Error connecting to DB, ${err}`)
     throw err;
