@@ -34,7 +34,7 @@
     "cors": "^2.8.5",
     "create-react-class": "^15.6.3",
     "dotenv": "^7.0.0",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "faker": "^4.1.0",
     "jest": "^22.3.0",
     "mobx": "^5.9.4",
